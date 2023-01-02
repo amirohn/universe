@@ -1,15 +1,7 @@
-import { DataCollector } from "../components/atoms/customers/dataCollector";
-import { CustomerList } from "../components/atoms/customers/object";
+import React, { Component } from "react";
 
 const Profile = () => {
-  const storeUser = new CustomerList([]);
-
-  return (
-    <div>
-      <DataCollector storeUser={storeUser} />
-      hi
-    </div>
-  );
+  return <h1>Profile</h1>;
 };
 
 export default Profile;

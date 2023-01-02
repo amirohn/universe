@@ -19,11 +19,12 @@ export default class Customer {
   }
 }
 export class CustomerList {
+  customerList?: object[];
   constructor() {
     this.customerList = [];
   }
-  addCustomer(newCustomer) {
-    return this.customerList.push(newCustomer);
+  addCustomer(newCustomer: object) {
+    return this.customerList?.push(newCustomer);
   }
   makeCustomerList() {
     return this.customerList;

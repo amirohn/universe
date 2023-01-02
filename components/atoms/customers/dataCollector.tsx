@@ -1,23 +1,36 @@
+import React, { Component } from "react";
 import Customer from "./object";
 import { inputList } from "./data";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, Box, Container } from "@mui/material";
 
-export const DataCollector = ({ storeUser }) => {
-  const [inputValue, setinputValue] = useState({});
+type UseObjectTypes = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  age: string;
+};
+
+export const DataCollector = ({ storeUser }: any) => {
+  const [inputValue, setinputValue] = useState<UseObjectTypes>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: "",
+  });
   const [users, setUsers] = useState([]);
   const [storage, setStorage] = useState([]);
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: any) => {
     const { name, value } = e.target;
     setinputValue((prev) => ({ ...prev, [name]: value }));
   };
 
   const { firstName, lastName, email, age } = inputValue;
-  const newCustomer = new Customer(firstName, lastName, email, age);
+  const newCustomer: Customer = new Customer(firstName, lastName, email, age);
   const datafields = inputList;
 
-  const submitHandler = (e) => {
+  const submitHandler = (e: any) => {
     e.preventDefault();
     storeUser.addCustomer(newCustomer);
     setStorage(storeUser.makeCustomerList());
@@ -26,7 +39,6 @@ export const DataCollector = ({ storeUser }) => {
     }
   };
 
-  console.log("####", storage);
   return (
     <Container maxWidth="xs">
       <form
@@ -40,7 +52,7 @@ export const DataCollector = ({ storeUser }) => {
               type="text"
               name={input.name}
               placeholder={input.placeholder}
-              value={inputValue.name}
+              value={inputValue[input.name as keyof UseObjectTypes]}
               onChange={(e) => {
                 onChangeHandler(e);
               }}
