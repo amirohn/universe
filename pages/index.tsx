@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import Button from "@mui/material/Button";
+import React, { Component } from "react";
 
 export default function Home() {
   return (
     <>
-      <Head></Head>
       <main>
         <div>
           <Link legacyBehavior href="/profile">
